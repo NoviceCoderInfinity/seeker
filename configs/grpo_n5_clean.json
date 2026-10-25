@@ -1,0 +1,45 @@
+{
+ "stage": "lora_grpo_n5_clean",
+ "base_models": [
+  "models/qwen2_5_vl_7b",
+  "models/qwen3_vl_8b_instruct"
+ ],
+ "train_data": "data/rl/n5_train_sft.jsonl",
+ "eval_data": "data/rl/n5_val_sft.jsonl",
+ "output_root": "runs/grpo",
+ "verl": {
+  "repo": "${VERL_ROOT}",
+  "entrypoint": "examples/grpo_trainer/run_qwen2_5_vl_7b_fsdp.sh",
+  "trainer": "grpo",
+  "lora_rank": 32,
+  "lora_alpha": 32,
+  "global_batch_size": 16,
+  "rollout_n": 4,
+  "rollout_tp": 2,
+  "max_turns": 4,
+  "epochs": 1,
+  "train_max_samples": -1,
+  "val_max_samples": 512,
+  "save_freq": 50,
+  "test_freq": 100
+ },
+ "reward_weights": {
+  "correct": 1.0,
+  "num_frames": 0.1,
+  "num_retrievals": 0.05,
+  "num_probes": 0.05,
+  "frame_evidence_precision": 0.3,
+  "calibrated_stop": 0.2,
+  "format_valid": 0.1
+ },
+ "budget_curriculum": [
+  4,
+  8,
+  16
+ ],
+ "notes": [
+  "N5 clean retrain: SFT cold start runs/sft/n5_curator_lora (traincln pools, video-disjoint,",
+  "strict eval firewall). Reward mode outcome (plain); frequent checkpoints on purpose -",
+  "s100/s1181 showed duration drift, so the checkpoint ladder IS an experiment."
+ ]
+}

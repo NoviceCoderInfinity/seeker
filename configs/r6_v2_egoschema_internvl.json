@@ -1,0 +1,42 @@
+{
+  "name": "r6_v2_egoschema_internvl",
+  "frames_path": "data/indices/egoschema_siglip_frames.jsonl",
+  "qa_path": "data/processed/egoschema_val_150.jsonl",
+  "output_dir": "runs/r6_v2_egoschema_internvl",
+  "budgets": [
+    4,
+    8,
+    16,
+    32
+  ],
+  "policies": [
+    "uniform",
+    "mmr_retrieve",
+    "aks",
+    "videotree",
+    "scripted_curator",
+    "curator_siglip",
+    "curator_probe_off",
+    "curator_curation_off"
+  ],
+  "answerer": {
+    "kind": "openai_compat",
+    "endpoint": "http://localhost:8000",
+    "model": "models/internvl3_5_8b",
+    "send_images": true,
+    "max_images": 16,
+    "timeout_seconds": 600
+  },
+  "policy": {
+    "max_hops": 4,
+    "retrieve_per_hop": 6,
+    "seed_uniform": 2,
+    "sufficiency_threshold": 0.72
+  },
+  "retrieval_recall_at_k": [
+    4,
+    8,
+    16,
+    32
+  ]
+}

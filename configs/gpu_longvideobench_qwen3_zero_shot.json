@@ -1,0 +1,31 @@
+{
+  "name": "gpu_longvideobench_qwen3_zero_shot",
+  "frames_path": "data/indices/longvideobench_siglip_frames.jsonl",
+  "qa_path": "data/processed/longvideobench_val_150.jsonl",
+  "output_dir": "runs/gpu_longvideobench_qwen3_zero_shot",
+  "budgets": [2, 4, 8, 16, 32],
+  "policies": [
+    "uniform",
+    "mmr_retrieve",
+    "scripted_curator",
+    "curator_probe_off",
+    "curator_curation_off",
+    "curator_summary_off",
+    "best_single_frame"
+  ],
+  "answerer": {
+    "kind": "openai_compat",
+    "endpoint": "http://localhost:8001",
+    "model": "models/qwen3_vl_8b_instruct",
+    "send_images": true,
+    "max_images": 16,
+    "timeout_seconds": 600
+  },
+  "policy": {
+    "max_hops": 4,
+    "retrieve_per_hop": 6,
+    "seed_uniform": 2,
+    "sufficiency_threshold": 0.72
+  },
+  "retrieval_recall_at_k": [4, 8, 16, 32]
+}

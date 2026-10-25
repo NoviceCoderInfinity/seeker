@@ -1,0 +1,364 @@
+%%%% refs.bib — bibliography for the WACV 2027 camera-ready
+%%%% "Seeing but Not Speaking: Most Token-Mass Interference in Budget-Bounded
+%%%%  Video Question Answering Is a Decoding Artifact" (Verma & Rawat).
+%%%%
+%%%% Keys here match EXACTLY the \cite{} keys in paper.tex.
+%%%% Each entry's [VERIFIED ...] line records when the citation was checked
+%%%% against the arXiv / proceedings record.
+
+% ============================================================================
+% Frame-selection mechanisms reimplemented
+% ============================================================================
+
+% [VERIFIED 2026-07-17] arxiv.org/abs/2502.21271 ; github.com/ncTimTang/AKS
+@inproceedings{tang2025aks,
+  title     = {Adaptive Keyframe Sampling for Long Video Understanding},
+  author    = {Tang, Xi and Qiu, Jihao and Xie, Lingxi and Tian, Yunjie and
+               Jiao, Jianbin and Ye, Qixiang},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and
+               Pattern Recognition (CVPR)},
+  year      = {2025},
+  eprint    = {2502.21271},
+  archivePrefix = {arXiv},
+}
+
+% [VERIFIED 2026-07-17] arxiv.org/abs/2405.19209 ; CVPR 2025 open access
+@inproceedings{wang2025videotree,
+  title     = {{VideoTree}: Adaptive Tree-based Video Representation for {LLM}
+               Reasoning on Long Videos},
+  author    = {Wang, Ziyang and Yu, Shoubin and Stengel-Eskin, Elias and
+               Yoon, Jaehong and Cheng, Feng and Bertasius, Gedas and
+               Bansal, Mohit},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and
+               Pattern Recognition (CVPR)},
+  year      = {2025},
+  eprint    = {2405.19209},
+  archivePrefix = {arXiv},
+}
+
+% [VERIFIED 2026-07-21] arxiv.org/abs/2506.22139 ; ICCV 2025
+@inproceedings{zhang2025qframe,
+  title     = {{Q-Frame}: Query-aware Frame Selection and Multi-Resolution
+               Adaptation for Video-{LLM}s},
+  author    = {Zhang, Shaojie and Yang, Jiahui and Yin, Jianqin and
+               Luo, Zhenbo and Luan, Jian},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on
+               Computer Vision (ICCV)},
+  year      = {2025},
+  eprint    = {2506.22139},
+  archivePrefix = {arXiv},
+}
+
+% [VERIFIED 2026-07-22] SIGIR'98, Melbourne; pp. 335--336.
+@inproceedings{carbonell1998mmr,
+  title     = {The Use of {MMR}, Diversity-Based Reranking for Reordering
+               Documents and Producing Summaries},
+  author    = {Carbonell, Jaime and Goldstein, Jade},
+  booktitle = {Proceedings of the 21st Annual International ACM SIGIR
+               Conference on Research and Development in Information Retrieval},
+  pages     = {335--336},
+  year      = {1998},
+}
+
+% ============================================================================
+% Memory for long-video understanding (related work)
+% ============================================================================
+
+% [VERIFIED 2026-07-22] arxiv.org/abs/2307.16449 ; CVPR 2024
+@inproceedings{song2024moviechat,
+  title     = {{MovieChat}: From Dense Token to Sparse Memory for Long Video
+               Understanding},
+  author    = {Song, Enxin and Chai, Wenhao and Wang, Guanhong and Zhang, Yucheng
+               and Zhou, Haoyang and Wu, Feiyang and Chi, Haozhe and Guo, Xun and
+               Ye, Tian and Zhang, Yanting and Lu, Yan and Hwang, Jenq-Neng and
+               Wang, Gaoang},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and
+               Pattern Recognition (CVPR)},
+  year      = {2024},
+  eprint    = {2307.16449},
+  archivePrefix = {arXiv},
+}
+
+% [VERIFIED 2026-07-22] arxiv.org/abs/2403.10517 ; ECCV 2024
+@inproceedings{wang2024videoagent,
+  title     = {{VideoAgent}: Long-form Video Understanding with Large Language
+               Model as Agent},
+  author    = {Wang, Xiaohan and Zhang, Yuhui and Zohar, Orr and Yeung-Levy, Serena},
+  booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+  year      = {2024},
+  eprint    = {2403.10517},
+  archivePrefix = {arXiv},
+}
+
+% [VERIFIED 2026-07-21] arxiv.org/abs/2508.09486 (Video-EM, v2 title)
+@article{wang2025videoem,
+  title   = {{Video-EM}: Event-Centric Episodic Memory for Long-Form Video
+             Understanding},
+  author  = {Wang, Yun and Zhang, Long and Liu, Jingren and Yan, Jiaqi and
+             Zhang, Zhanjie and Zheng, Jiahao and Ma, Ao and Ling, Run and
+             Yang, Xun and Wu, Dapeng and Chen, Xiangyu and Li, Xuelong},
+  journal = {arXiv preprint arXiv:2508.09486},
+  year    = {2025},
+}
+
+% ============================================================================
+% Backbones / answerers
+% ============================================================================
+
+% [VERIFIED 2026-07-17] arxiv.org/abs/2502.13923 (Qwen Team, Alibaba)
+@article{qwen25vl,
+  title   = {{Qwen2.5-VL} Technical Report},
+  author  = {{Qwen Team}},
+  journal = {arXiv preprint arXiv:2502.13923},
+  year    = {2025},
+}
+
+% [VERIFIED 2026-07-21] arxiv.org/abs/2508.18265
+@article{wang2025internvl35,
+  title   = {{InternVL3.5}: Advancing Open-Source Multimodal Models in
+             Versatility, Reasoning, and Efficiency},
+  author  = {Wang, Weiyun and Gao, Zhangwei and Gu, Lixin and Pu, Hengjun and
+             Cui, Long and Wei, Xingguang and Liu, Zhaoyang and Jing, Linglin
+             and Ye, Shenglong and Shao, Jie and others},
+  journal = {arXiv preprint arXiv:2508.18265},
+  year    = {2025},
+}
+
+% [VERIFIED 2026-07-21] arxiv.org/abs/2408.03326
+@article{li2024onevision,
+  title   = {{LLaVA-OneVision}: Easy Visual Task Transfer},
+  author  = {Li, Bo and Zhang, Yuanhan and Guo, Dong and Zhang, Renrui and
+             Li, Feng and Zhang, Hao and Zhang, Kaichen and Li, Yanwei and
+             Liu, Ziwei and Li, Chunyuan},
+  journal = {arXiv preprint arXiv:2408.03326},
+  year    = {2024},
+}
+
+% [VERIFIED 2026-07-22] arxiv.org/abs/2410.02713 (LLaVA-Video)
+@article{zhang2024llavavideo,
+  title   = {{LLaVA-Video}: Video Instruction Tuning with Synthetic Data},
+  author  = {Zhang, Yuanhan and Wu, Jinming and Li, Wei and Li, Bo and
+             Ma, Zejun and Liu, Ziwei and Li, Chunyuan},
+  journal = {arXiv preprint arXiv:2410.02713},
+  year    = {2024},
+}
+
+% [VERIFIED 2026-07-21] arxiv.org/abs/2503.19786 (Gemma Team, Google DeepMind)
+@article{gemma3,
+  title   = {Gemma 3 Technical Report},
+  author  = {{Gemma Team}},
+  journal = {arXiv preprint arXiv:2503.19786},
+  year    = {2025},
+}
+
+% ============================================================================
+% Benchmarks
+% ============================================================================
+
+@inproceedings{xiao2021nextqa,
+  title     = {{NExT-QA}: Next Phase of Question-Answering to Explaining
+               Temporal Actions},
+  author    = {Xiao, Junbin and Shang, Xindi and Yao, Angela and Chua, Tat-Seng},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and
+               Pattern Recognition (CVPR)},
+  year      = {2021},
+}
+
+@inproceedings{xiao2024nextgqa,
+  title     = {Can {I} Trust Your Answer? Visually Grounded Video Question
+               Answering},
+  author    = {Xiao, Junbin and Yao, Angela and Li, Yicong and Chua, Tat-Seng},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and
+               Pattern Recognition (CVPR)},
+  year      = {2024},
+}
+
+@inproceedings{mangalam2023egoschema,
+  title     = {{EgoSchema}: A Diagnostic Benchmark for Very Long-form Video
+               Language Understanding},
+  author    = {Mangalam, Karttikeya and Akshulakov, Raiymbek and Malik, Jitendra},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2023},
+}
+
+% [VERIFIED 2026-07-21] arxiv.org/abs/2405.21075 ; CVPR 2025
+@inproceedings{fu2025videomme,
+  title     = {{Video-MME}: The First-Ever Comprehensive Evaluation Benchmark
+               of Multi-modal {LLM}s in Video Analysis},
+  author    = {Fu, Chaoyou and Dai, Yuhan and Luo, Yongdong and Li, Lei and
+               Ren, Shuhuai and Zhang, Renrui and Wang, Zihan and Zhou, Chenyu
+               and Shen, Yunhang and Zhang, Mengdan and others},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and
+               Pattern Recognition (CVPR)},
+  year      = {2025},
+  eprint    = {2405.21075},
+  archivePrefix = {arXiv},
+}
+
+% [VERIFIED 2026-07-21] arxiv.org/abs/2406.04264 (current title)
+@article{zhou2024mlvu,
+  title   = {{MLVU}: Benchmarking Multi-task Long Video Understanding},
+  author  = {Zhou, Junjie and Shu, Yan and Zhao, Bo and Wu, Boya and
+             Liang, Zhengyang and Xiao, Shitao and Qin, Minghao and Yang, Xi
+             and Xiong, Yongping and Zhang, Bo and Huang, Tiejun and Liu, Zheng},
+  journal = {arXiv preprint arXiv:2406.04264},
+  year    = {2024},
+}
+
+% [VERIFIED 2026-07-21] arxiv.org/abs/2406.08035 ; ICCV 2025
+@inproceedings{wang2025lvbench,
+  title     = {{LVBench}: An Extreme Long Video Understanding Benchmark},
+  author    = {Wang, Weihan and He, Zehai and Hong, Wenyi and Cheng, Yean and
+               Zhang, Xiaohan and Qi, Ji and Gu, Xiaotao and Huang, Shiyu and
+               Xu, Bin and Dong, Yuxiao and Ding, Ming and Tang, Jie},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on
+               Computer Vision (ICCV)},
+  year      = {2025},
+  eprint    = {2406.08035},
+  archivePrefix = {arXiv},
+}
+
+% [VERIFIED 2026-07-21] arxiv.org/abs/2407.15754 ; NeurIPS 2024 D&B
+@inproceedings{wu2024longvideobench,
+  title     = {{LongVideoBench}: A Benchmark for Long-context Interleaved
+               Video-Language Understanding},
+  author    = {Wu, Haoning and Li, Dongxu and Chen, Bei and Li, Junnan},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)
+               Datasets and Benchmarks Track},
+  year      = {2024},
+}
+
+% ============================================================================
+% Method components / statistics / readout
+% ============================================================================
+
+% [VERIFIED 2026-07-22] Zhai et al., ICCV 2023 (arXiv 2303.15343)
+@inproceedings{zhai2023siglip,
+  title     = {Sigmoid Loss for Language Image Pre-Training},
+  author    = {Zhai, Xiaohua and Mustafa, Basil and Kolesnikov, Alexander and
+               Beyer, Lucas},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on
+               Computer Vision (ICCV)},
+  year      = {2023},
+}
+
+% [VERIFIED 2026-07-22] Hu et al., ICLR 2022 (arXiv 2106.09685)
+@inproceedings{hu2022lora,
+  title     = {{LoRA}: Low-Rank Adaptation of Large Language Models},
+  author    = {Hu, Edward J. and Shen, Yelong and Wallis, Phillip and
+               Allen-Zhu, Zeyuan and Li, Yuanzhi and Wang, Shean and
+               Wang, Lu and Chen, Weizhu},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2022},
+}
+
+% [VERIFIED 2026-07-22] Wang et al., ICLR 2023 (arXiv 2203.11171)
+@inproceedings{wang2023selfconsistency,
+  title     = {Self-Consistency Improves Chain of Thought Reasoning in Language
+               Models},
+  author    = {Wang, Xuezhi and Wei, Jason and Schuurmans, Dale and Le, Quoc and
+               Chi, Ed and Narang, Sharan and Chowdhery, Aakanksha and Zhou, Denny},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023},
+}
+
+% [VERIFIED 2026-07-22] Chen et al. (Codex), arXiv 2107.03374, 2021
+@article{chen2021codex,
+  title   = {Evaluating Large Language Models Trained on Code},
+  author  = {Chen, Mark and Tworek, Jerry and Jun, Heewoo and Yuan, Qiming and
+             de Oliveira Pinto, Henrique Ponde and Kaplan, Jared and Edwards, Harri
+             and Burda, Yuri and Joseph, Nicholas and Brockman, Greg and others},
+  journal = {arXiv preprint arXiv:2107.03374},
+  year    = {2021},
+}
+
+@article{mcnemar1947,
+  title   = {Note on the Sampling Error of the Difference Between Correlated
+             Proportions or Percentages},
+  author  = {McNemar, Quinn},
+  journal = {Psychometrika},
+  volume  = {12},
+  number  = {2},
+  pages   = {153--157},
+  year    = {1947},
+}
+
+@article{wilson1927,
+  title   = {Probable Inference, the Law of Succession, and Statistical
+             Inference},
+  author  = {Wilson, Edwin B.},
+  journal = {Journal of the American Statistical Association},
+  volume  = {22},
+  number  = {158},
+  pages   = {209--212},
+  year    = {1927},
+}
+
+% [VERIFIED 2026-10-18] Holtzman, West, Shwartz, Choi, Zettlemoyer; EMNLP 2021;
+%   arXiv 2104.08315; ACL Anthology 2021.emnlp-main.564, pp. 7038--7051.
+@inproceedings{holtzman2021surface,
+  title     = {Surface Form Competition: Why the Highest Probability Answer
+               Isn't Always Right},
+  author    = {Holtzman, Ari and West, Peter and Shwartz, Vered and
+               Choi, Yejin and Zettlemoyer, Luke},
+  booktitle = {Proceedings of the 2021 Conference on Empirical Methods in
+               Natural Language Processing (EMNLP)},
+  pages     = {7038--7051},
+  year      = {2021},
+  eprint    = {2104.08315},
+  archivePrefix = {arXiv},
+}
+
+% [VERIFIED 2026-10-18] Zhao, Wallace, Feng, Klein, Singh; ICML 2021;
+%   arXiv 2102.09690; PMLR 139:12697--12706. (PMLR lists first author as
+%   "Zihao Zhao"; arXiv as "Tony Z. Zhao" — same person; proceedings name kept.)
+@inproceedings{zhao2021calibrate,
+  title     = {Calibrate Before Use: Improving Few-Shot Performance of Language
+               Models},
+  author    = {Zhao, Zihao and Wallace, Eric and Feng, Shi and Klein, Dan and
+               Singh, Sameer},
+  booktitle = {Proceedings of the 38th International Conference on Machine
+               Learning (ICML)},
+  pages     = {12697--12706},
+  year      = {2021},
+  eprint    = {2102.09690},
+  archivePrefix = {arXiv},
+}
+
+% [VERIFIED 2026-10-18] Robinson, Rytting, Wingate; ICLR 2023; arXiv 2210.12353.
+@inproceedings{robinson2023mcqa,
+  title     = {Leveraging Large Language Models for Multiple Choice Question
+               Answering},
+  author    = {Robinson, Joshua and Rytting, Christopher Michael and
+               Wingate, David},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023},
+  eprint    = {2210.12353},
+  archivePrefix = {arXiv},
+}
+
+% [VERIFIED 2026-10-18] Zheng, Zhou, Meng, Zhou, Huang; ICLR 2024 (Spotlight);
+%   arXiv 2309.03882 (v1 title was "On Large Language Models' Selection Bias
+%   in Multi-Choice Questions"; final title below).
+@inproceedings{zheng2024notrobust,
+  title     = {Large Language Models Are Not Robust Multiple Choice Selectors},
+  author    = {Zheng, Chujie and Zhou, Hao and Meng, Fandong and Zhou, Jie and
+               Huang, Minlie},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024},
+  eprint    = {2309.03882},
+  archivePrefix = {arXiv},
+}
+
+% [VERIFIED 2026-10-18] Liu, Lin, Hewitt, Paranjape, Bevilacqua, Petroni, Liang;
+%   TACL 2024, vol. 12, pp. 157--173; arXiv 2307.03172.
+@article{liu2024lost,
+  title   = {Lost in the Middle: How Language Models Use Long Contexts},
+  author  = {Liu, Nelson F. and Lin, Kevin and Hewitt, John and
+             Paranjape, Ashwin and Bevilacqua, Michele and Petroni, Fabio and
+             Liang, Percy},
+  journal = {Transactions of the Association for Computational Linguistics (TACL)},
+  volume  = {12},
+  pages   = {157--173},
+  year    = {2024},
+}

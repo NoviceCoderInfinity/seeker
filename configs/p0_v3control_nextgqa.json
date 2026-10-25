@@ -1,0 +1,36 @@
+{
+ "name": "p0_v3control_nextgqa",
+ "qa_path": "data/processed/heldout/nextgqa_heldout.jsonl",
+ "frames_path": "data/indices/nextgqa_siglip_frames.jsonl",
+ "output_dir": "runs/p0_v3control_nextgqa",
+ "budgets": [
+  4,
+  8
+ ],
+ "policies": [
+  "uniform",
+  "dde_curator"
+ ],
+ "answerer": {
+  "kind": "openai_compat",
+  "endpoint": "http://localhost:8000",
+  "model": "models/qwen2_5_vl_7b",
+  "send_images": true,
+  "max_images": 64,
+  "timeout_seconds": 900,
+  "prompt_style": "v3"
+ },
+ "policy": {
+  "max_hops": 4,
+  "retrieve_per_hop": 6,
+  "seed_uniform": 2,
+  "sufficiency_threshold": 0.72,
+  "scan_n": 16,
+  "ledger_chars": 6000
+ },
+ "retrieval_recall_at_k": [
+  4,
+  8,
+  16
+ ]
+}

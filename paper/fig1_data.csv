@@ -1,0 +1,16 @@
+model,option,answer_share,accuracy,n,source_run
+base,A,0.018,0.202,500,runs/grid_egoschema_c4_full_qwen25_7b/predictions.jsonl
+base,B,0.010,0.202,500,runs/grid_egoschema_c4_full_qwen25_7b/predictions.jsonl
+base,C,0.916,0.202,500,runs/grid_egoschema_c4_full_qwen25_7b/predictions.jsonl
+base,D,0.010,0.202,500,runs/grid_egoschema_c4_full_qwen25_7b/predictions.jsonl
+base,E,0.014,0.202,500,runs/grid_egoschema_c4_full_qwen25_7b/predictions.jsonl
+lora_thumb_trained_control,A,0.120,0.756,500,runs/grid_egoschema_c4_full_x4control/predictions.jsonl
+lora_thumb_trained_control,B,0.268,0.756,500,runs/grid_egoschema_c4_full_x4control/predictions.jsonl
+lora_thumb_trained_control,C,0.202,0.756,500,runs/grid_egoschema_c4_full_x4control/predictions.jsonl
+lora_thumb_trained_control,D,0.204,0.756,500,runs/grid_egoschema_c4_full_x4control/predictions.jsonl
+lora_thumb_trained_control,E,0.206,0.756,500,runs/grid_egoschema_c4_full_x4control/predictions.jsonl
+lora_fullres_trained_treatment,A,0.126,0.736,500,runs/grid_egoschema_c4_full_x4treat/predictions.jsonl
+lora_fullres_trained_treatment,B,0.254,0.736,500,runs/grid_egoschema_c4_full_x4treat/predictions.jsonl
+lora_fullres_trained_treatment,C,0.200,0.736,500,runs/grid_egoschema_c4_full_x4treat/predictions.jsonl
+lora_fullres_trained_treatment,D,0.202,0.736,500,runs/grid_egoschema_c4_full_x4treat/predictions.jsonl
+lora_fullres_trained_treatment,E,0.218,0.736,500,runs/grid_egoschema_c4_full_x4treat/predictions.jsonl

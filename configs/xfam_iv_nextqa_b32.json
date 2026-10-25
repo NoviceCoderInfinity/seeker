@@ -1,0 +1,35 @@
+{
+ "name": "xfam_iv_nextqa_b32",
+ "qa_path": "data/processed/heldout/nextqa_heldout.jsonl",
+ "frames_path": "data/indices/nextqa_temporal_siglip_frames.jsonl",
+ "output_dir": "runs/xfam_iv_nextqa_b32",
+ "budgets": [
+  32
+ ],
+ "policies": [
+  "uniform",
+  "dde_curator"
+ ],
+ "answerer": {
+  "kind": "openai_compat",
+  "endpoint": "http://127.0.0.1:8505",
+  "model": "models/internvl3_5_8b",
+  "send_images": true,
+  "max_images": 64,
+  "timeout_seconds": 900,
+  "prompt_style": "v3"
+ },
+ "policy": {
+  "max_hops": 4,
+  "retrieve_per_hop": 6,
+  "seed_uniform": 2,
+  "sufficiency_threshold": 0.72,
+  "scan_n": 16,
+  "ledger_chars": 6000
+ },
+ "retrieval_recall_at_k": [
+  4,
+  8,
+  16
+ ]
+}

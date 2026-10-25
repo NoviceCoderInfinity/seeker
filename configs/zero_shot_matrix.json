@@ -1,0 +1,96 @@
+{
+  "name": "zero_shot_matrix",
+  "output_root": "runs/zero_shot",
+  "datasets": [
+    {
+      "name": "fixture",
+      "frames_path": "data/fixtures/frames.jsonl",
+      "qa_path": "data/fixtures/qa.jsonl"
+    },
+    {
+      "name": "nextgqa_150",
+      "frames_path": "data/indices/nextgqa_siglip_frames.jsonl",
+      "qa_path": "data/processed/nextgqa_val_150.jsonl"
+    },
+    {
+      "name": "nextgqa_timestamp_150",
+      "frames_path": "data/indices/nextgqa_timestamp_frames.jsonl",
+      "qa_path": "data/processed/nextgqa_val_150.jsonl"
+    },
+    {
+      "name": "longvideobench_150",
+      "frames_path": "data/indices/longvideobench_siglip_frames.jsonl",
+      "qa_path": "data/processed/longvideobench_val_150.jsonl"
+    },
+    {
+      "name": "videomme_long_150",
+      "frames_path": "data/indices/videomme_long_siglip_frames.jsonl",
+      "qa_path": "data/processed/videomme_long_150.jsonl"
+    },
+    {
+      "name": "egoschema_150",
+      "frames_path": "data/indices/egoschema_siglip_frames.jsonl",
+      "qa_path": "data/processed/egoschema_val_150.jsonl"
+    },
+    {
+      "name": "nextqa_temporal_150",
+      "frames_path": "data/indices/nextqa_temporal_siglip_frames.jsonl",
+      "qa_path": "data/processed/nextqa_temporal_val_150.jsonl"
+    },
+    {
+      "name": "mlvu_150",
+      "frames_path": "data/indices/mlvu_siglip_frames.jsonl",
+      "qa_path": "data/processed/mlvu_val_150.jsonl"
+    }
+  ],
+  "budgets": [2, 4, 8, 16, 32, 64],
+  "policies": [
+    "uniform",
+    "mmr_retrieve",
+    "scripted_curator",
+    "curator_probe_off",
+    "curator_curation_off",
+    "curator_summary_off",
+    "oracle_span",
+    "best_single_frame"
+  ],
+  "answerers": [
+    {
+      "name": "lexical_fixture",
+      "kind": "lexical",
+      "datasets": ["fixture"]
+    },
+    {
+      "name": "lexical_metadata",
+      "kind": "lexical",
+      "datasets": ["nextgqa_timestamp_150"]
+    },
+    {
+      "name": "qwen2_5_vl_7b",
+      "kind": "openai_compat",
+      "endpoint": "http://localhost:8000",
+      "model": "models/qwen2_5_vl_7b",
+      "send_images": true,
+      "max_images": 32,
+      "timeout_seconds": 240,
+      "datasets": ["nextgqa_150", "longvideobench_150", "videomme_long_150", "egoschema_150", "nextqa_temporal_150", "mlvu_150"]
+    },
+    {
+      "name": "qwen3_vl_8b_instruct",
+      "kind": "openai_compat",
+      "endpoint": "http://localhost:8001",
+      "model": "models/qwen3_vl_8b_instruct",
+      "send_images": true,
+      "max_images": 32,
+      "timeout_seconds": 240,
+      "datasets": ["nextgqa_150", "longvideobench_150", "videomme_long_150", "egoschema_150", "nextqa_temporal_150", "mlvu_150"]
+    }
+  ],
+  "policy": {
+    "max_hops": 4,
+    "retrieve_per_hop": 6,
+    "seed_uniform": 2,
+    "sufficiency_threshold": 0.72
+  },
+  "retrieval_recall_at_k": [4, 8, 16, 32]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "h100_day1_day2_kill_test",
+  "frames_path": "${VIDCURATOR_DATA_ROOT}/indices/longvideobench_siglip_frames.jsonl",
+  "qa_path": "${VIDCURATOR_DATA_ROOT}/qa/longvideobench_val_150.jsonl",
+  "output_dir": "runs/longvideobench_kill_test",
+  "answerer": {
+    "kind": "openai_compat",
+    "endpoint": "http://localhost:8000",
+    "model": "Qwen/Qwen3-VL-8B-Instruct",
+    "api_key_env": "OPENAI_API_KEY",
+    "timeout_seconds": 180
+  },
+  "budgets": [4, 8, 16, 32],
+  "policies": ["uniform", "mmr_retrieve", "scripted_curator", "best_single_frame"],
+  "policy": {
+    "max_hops": 4,
+    "retrieve_per_hop": 6,
+    "seed_uniform": 2,
+    "sufficiency_threshold": 0.72
+  },
+  "retrieval_recall_at_k": [4, 8, 16, 32]
+}

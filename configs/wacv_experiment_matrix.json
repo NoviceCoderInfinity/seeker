@@ -1,0 +1,137 @@
+{
+  "name": "wacv_experiment_matrix",
+  "target_venue": "WACV 2027",
+  "submission_target": "Round 2 unless Round 1 enrollment already exists",
+  "budgets": [2, 4, 8, 16, 32, 64],
+  "datasets": [
+    {
+      "name": "nextgqa",
+      "role": "grounded evidence sanity and reward labels",
+      "small_split": "data/processed/nextgqa_val_150.jsonl",
+      "full_split": "data/processed/nextgqa_val.jsonl",
+      "frame_index": "data/indices/nextgqa_siglip_frames.jsonl",
+      "metrics": ["accuracy", "fep", "fer", "if", "ece", "sfdelta"]
+    },
+    {
+      "name": "longvideobench",
+      "role": "main long-context QA Pareto",
+      "small_split": "data/processed/longvideobench_val_150.jsonl",
+      "full_split": "data/processed/longvideobench_val.jsonl",
+      "frame_index": "data/indices/longvideobench_siglip_frames.jsonl",
+      "metrics": ["accuracy", "ce_auc", "frames_used", "latency", "gpu_hours"]
+    },
+    {
+      "name": "videomme_long",
+      "role": "broad long-video benchmark",
+      "small_split": "data/processed/videomme_long_150.jsonl",
+      "full_split": "data/processed/videomme_long.jsonl",
+      "frame_index": "data/indices/videomme_long_siglip_frames.jsonl",
+      "metrics": ["accuracy", "ce_auc", "frames_used", "latency", "subtitle_setting"]
+    },
+    {
+      "name": "mlvu",
+      "role": "multi-task long-video robustness",
+      "small_split": "data/processed/mlvu_val_150.jsonl",
+      "full_split": "data/processed/mlvu_val.jsonl",
+      "frame_index": "data/indices/mlvu_siglip_frames.jsonl",
+      "metrics": ["accuracy_by_task", "ce_auc", "frames_used", "latency"]
+    },
+    {
+      "name": "nextqa_temporal",
+      "role": "temporal/causal shortcut control",
+      "small_split": "data/processed/nextqa_temporal_val_150.jsonl",
+      "full_split": "data/processed/nextqa_temporal_val.jsonl",
+      "frame_index": "data/indices/nextqa_siglip_frames.jsonl",
+      "metrics": ["accuracy", "sfdelta", "ce_auc"]
+    },
+    {
+      "name": "egoschema",
+      "role": "egocentric domain transfer",
+      "small_split": "data/processed/egoschema_val_150.jsonl",
+      "full_split": "data/processed/egoschema_val.jsonl",
+      "frame_index": "data/indices/egoschema_siglip_frames.jsonl",
+      "metrics": ["accuracy", "csr", "rrl", "ce_auc"]
+    }
+  ],
+  "backbones": [
+    {
+      "name": "qwen2_5_vl_7b",
+      "hf_id": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "role": "first kill-test and full ablation backbone",
+      "server": "vllm_or_transformers",
+      "priority": 1
+    },
+    {
+      "name": "qwen3_vl_8b_instruct",
+      "hf_id": "Qwen/Qwen3-VL-8B-Instruct",
+      "role": "main headline open VLM",
+      "server": "vllm_or_transformers",
+      "priority": 2
+    },
+    {
+      "name": "internvl3_5_8b",
+      "hf_id": "OpenGVLab/InternVL3_5-8B",
+      "role": "independent model family robustness",
+      "server": "transformers",
+      "priority": 3
+    },
+    {
+      "name": "llava_video_7b_qwen2",
+      "hf_id": "lmms-lab/LLaVA-Video-7B-Qwen2",
+      "role": "common video-LMM comparison",
+      "server": "transformers",
+      "priority": 4,
+      "verify_license_before_run": true
+    },
+    {
+      "name": "qwen3_vl_8b_thinking",
+      "hf_id": "Qwen/Qwen3-VL-8B-Thinking",
+      "role": "optional probe calibration and thinking-mode analysis",
+      "server": "vllm_or_transformers",
+      "priority": 5,
+      "verify_availability_before_run": true
+    }
+  ],
+  "internal_methods": [
+    "uniform",
+    "mmr_retrieve",
+    "best_single_frame",
+    "oracle_span",
+    "scripted_curator",
+    "curator_siglip",
+    "curator_probe_off",
+    "curator_curation_off",
+    "curator_summary_off",
+    "retrieval_off",
+    "sufficiency_off",
+    "trained_curator_lora_grpo"
+  ],
+  "analysis_ceilings": [
+    "oracle_span",
+    "curator_oracle_probe"
+  ],
+  "external_methods": [
+    "AKS",
+    "VideoTree",
+    "Flexible_Frame_Selection (impl: flexframe)",
+    "FrameThinker",
+    "VideoBrain",
+    "Adaptive_Greedy_Frame_Selection",
+    "AIR",
+    "F2C_key_clip_selection"
+  ],
+  "result_gates": {
+    "minimum_viable": [
+      "scripted_curator@8 >= uniform@16 or scripted_curator@16 >= uniform@32",
+      "scripted_curator FEP > uniform FEP on NExT-GQA",
+      "full method beats at least two of probe-off, curation-off, summary-off",
+      "SFDelta is positive on temporal/causal subsets"
+    ],
+    "strong": [
+      "scripted_curator matches or beats MMR with fewer frames or better FEP",
+      "trained_curator improves scripted by 1-3 accuracy points on two datasets",
+      "direction of gains holds on Qwen2.5-VL and Qwen3-VL",
+      "controlled external baselines are matched or beaten at tight budgets"
+    ]
+  }
+}

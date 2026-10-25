@@ -1,0 +1,9 @@
+# Pinned GRPO stack for vidcurator-grpo (see env/setup_grpo_env.sh).
+# vLLM 0.8.x lacks run_headless; verl imports it at module load time.
+# scripts/verl_vllm_compat.py stubs it for single-node DGX jobs.
+# vLLM 0.11.x is the newest prebuilt wheel compatible with torch 2.6/cu124 here.
+
+vllm==0.11.2
+trl>=0.15,<0.20
+tensordict>=0.8.0,<=0.10.0,!=0.9.0
+ray[default]>=2.41.0

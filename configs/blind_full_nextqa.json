@@ -1,0 +1,32 @@
+{
+ "name": "blind_full_nextqa",
+ "qa_path": "data/processed/nextqa_temporal_test_3500.jsonl",
+ "frames_path": "data/indices/nextqa_temporal_siglip_frames.jsonl",
+ "output_dir": "runs/blind_full_nextqa",
+ "budgets": [
+  0
+ ],
+ "policies": [
+  "uniform"
+ ],
+ "answerer": {
+  "kind": "openai_compat",
+  "endpoint": "http://127.0.0.1:8531",
+  "model": "models/qwen2_5_vl_7b",
+  "send_images": true,
+  "max_images": 64,
+  "timeout_seconds": 900,
+  "prompt_style": "v3"
+ },
+ "policy": {
+  "max_hops": 4,
+  "retrieve_per_hop": 6,
+  "seed_uniform": 2,
+  "sufficiency_threshold": 0.72
+ },
+ "retrieval_recall_at_k": [
+  4,
+  8,
+  16
+ ]
+}

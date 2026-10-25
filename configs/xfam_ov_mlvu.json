@@ -1,0 +1,37 @@
+{
+ "name": "xfam_ov_mlvu",
+ "qa_path": "data/processed/heldout/mlvu_heldout.jsonl",
+ "frames_path": "data/indices/mlvu_siglip_frames.jsonl",
+ "output_dir": "runs/xfam_ov_mlvu",
+ "budgets": [
+  4,
+  8
+ ],
+ "policies": [
+  "uniform",
+  "scripted_curator",
+  "dde_curator"
+ ],
+ "answerer": {
+  "kind": "openai_compat",
+  "endpoint": "http://127.0.0.1:8520",
+  "model": "models/llava_onevision_qwen2_7b_ov",
+  "send_images": true,
+  "max_images": 64,
+  "timeout_seconds": 900,
+  "prompt_style": "v3"
+ },
+ "policy": {
+  "max_hops": 4,
+  "retrieve_per_hop": 6,
+  "seed_uniform": 2,
+  "sufficiency_threshold": 0.72,
+  "scan_n": 16,
+  "ledger_chars": 6000
+ },
+ "retrieval_recall_at_k": [
+  4,
+  8,
+  16
+ ]
+}

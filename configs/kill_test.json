@@ -1,0 +1,18 @@
+{
+  "name": "fixture_kill_test",
+  "frames_path": "data/fixtures/frames.jsonl",
+  "qa_path": "data/fixtures/qa.jsonl",
+  "output_dir": "runs/kill_test_fixture",
+  "answerer": {
+    "kind": "lexical"
+  },
+  "budgets": [2, 4, 6],
+  "policies": ["uniform", "mmr_retrieve", "scripted_curator", "best_single_frame"],
+  "policy": {
+    "max_hops": 3,
+    "retrieve_per_hop": 3,
+    "seed_uniform": 1,
+    "sufficiency_threshold": 0.66
+  },
+  "retrieval_recall_at_k": [1, 2, 4, 8]
+}

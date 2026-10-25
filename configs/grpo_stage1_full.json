@@ -1,0 +1,39 @@
+{
+  "stage": "lora_grpo_full",
+  "base_models": [
+    "models/qwen2_5_vl_7b",
+    "models/qwen3_vl_8b_instruct"
+  ],
+  "train_data": "data/rl/vidcurator_train_sft.jsonl",
+  "eval_data": "data/rl/vidcurator_val_sft.jsonl",
+  "output_root": "runs/grpo",
+  "verl": {
+    "repo": "${VERL_ROOT}",
+    "entrypoint": "examples/grpo_trainer/run_qwen2_5_vl_7b_fsdp.sh",
+    "trainer": "grpo",
+    "lora_rank": 32,
+    "lora_alpha": 32,
+    "global_batch_size": 16,
+    "rollout_n": 1,
+    "rollout_tp": 2,
+    "max_turns": 4,
+    "epochs": 3,
+    "val_max_samples": 256,
+    "save_freq": 64,
+    "test_freq": 64
+  },
+  "reward_weights": {
+    "correct": 1.0,
+    "num_frames": 0.1,
+    "num_retrievals": 0.05,
+    "num_probes": 0.05,
+    "frame_evidence_precision": 0.3,
+    "calibrated_stop": 0.2,
+    "format_valid": 0.1
+  },
+  "budget_curriculum": [4, 8, 16],
+  "notes": [
+    "Full GRPO after pilot gates pass. Memory-safe: batch 16, rollout_n 1 (matches 04_grpo_dgx.sh OOM fixes).",
+    "Omits train_max_samples → uses full ~18.9k train turns. Auto-resumes from pilot checkpoint in runs/grpo/qwen2_5_vl_7b/."
+  ]
+}

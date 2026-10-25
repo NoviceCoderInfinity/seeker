@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+.conda-env/
+env/*.conda/
+
+# Data, models, runs, logs — reproduced from scripts / released as TokenBudgetBench
+data/
+models/
+runs/
+logs/
+outputs/
+reports/figures/
+*.log
+slurm-*.out
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.out
+paper/*.log
+paper/*.synctex.gz
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Secrets — never commit
+.env
+*.pem
+*.key
+**/secrets*

@@ -1,0 +1,47 @@
+{
+  "name": "r1_v2_videomme_qwen2_5",
+  "frames_path": "data/indices/videomme_long_siglip_frames.jsonl",
+  "qa_path": "data/processed/videomme_long_150.jsonl",
+  "output_dir": "runs/r1_v2_videomme_qwen2_5",
+  "budgets": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "policies": [
+    "uniform",
+    "mmr_retrieve",
+    "aks",
+    "videotree",
+    "flexframe",
+    "scripted_curator",
+    "curator_siglip",
+    "curator_probe_off",
+    "curator_curation_off",
+    "curator_summary_off",
+    "curator_sufficiency_off",
+    "curator_retrieval_off"
+  ],
+  "answerer": {
+    "kind": "openai_compat",
+    "endpoint": "http://localhost:8000",
+    "model": "models/qwen2_5_vl_7b",
+    "send_images": true,
+    "max_images": 32,
+    "timeout_seconds": 600
+  },
+  "policy": {
+    "max_hops": 4,
+    "retrieve_per_hop": 6,
+    "seed_uniform": 2,
+    "sufficiency_threshold": 0.72
+  },
+  "retrieval_recall_at_k": [
+    4,
+    8,
+    16,
+    32
+  ]
+}

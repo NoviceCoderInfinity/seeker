@@ -1,0 +1,38 @@
+{
+  "name": "r2_v2_nextqa_qwen2_5_full",
+  "frames_path": "data/indices/nextqa_temporal_siglip_frames.jsonl",
+  "qa_path": "data/processed/nextqa_temporal_test_3500_half.jsonl",
+  "output_dir": "runs/r2_v2_nextqa_qwen2_5_full",
+  "budgets": [
+    4,
+    8,
+    16,
+    32
+  ],
+  "policies": [
+    "uniform",
+    "mmr_retrieve",
+    "scripted_curator",
+    "curator_siglip"
+  ],
+  "answerer": {
+    "kind": "openai_compat",
+    "endpoint": "http://localhost:8000",
+    "model": "models/qwen2_5_vl_7b",
+    "send_images": true,
+    "max_images": 32,
+    "timeout_seconds": 600
+  },
+  "policy": {
+    "max_hops": 4,
+    "retrieve_per_hop": 6,
+    "seed_uniform": 2,
+    "sufficiency_threshold": 0.72
+  },
+  "retrieval_recall_at_k": [
+    4,
+    8,
+    16,
+    32
+  ]
+}

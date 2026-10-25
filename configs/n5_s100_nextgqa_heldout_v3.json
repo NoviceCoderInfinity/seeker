@@ -1,0 +1,38 @@
+{
+ "name": "n5_s100_nextgqa_heldout_v3",
+ "frames_path": "data/indices/nextgqa_siglip_frames.jsonl",
+ "qa_path": "data/processed/heldout/nextgqa_heldout.jsonl",
+ "output_dir": "runs/n5_s100_nextgqa_heldout_v3",
+ "budgets": [
+  4,
+  8
+ ],
+ "policies": [
+  "learned_curator"
+ ],
+ "action_policy": {
+  "model_path": "models/qwen2_5_vl_7b",
+  "adapter_path": "runs/grpo/n5_clean_s100_lora/lora_adapter",
+  "max_new_tokens": 384
+ },
+ "answerer": {
+  "kind": "openai_compat",
+  "endpoint": "http://localhost:8000",
+  "model": "models/qwen2_5_vl_7b",
+  "send_images": true,
+  "max_images": 16,
+  "timeout_seconds": 600,
+  "prompt_style": "v3"
+ },
+ "policy": {
+  "max_hops": 4,
+  "retrieve_per_hop": 6,
+  "seed_uniform": 2,
+  "sufficiency_threshold": 0.72
+ },
+ "retrieval_recall_at_k": [
+  4,
+  8,
+  16
+ ]
+}

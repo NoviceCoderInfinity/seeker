@@ -1,0 +1,40 @@
+{
+ "name": "s1181_mlvu_253",
+ "frames_path": "data/indices/mlvu_150_siglip_frames.jsonl",
+ "qa_path": "data/processed/mlvu_val_half.jsonl",
+ "output_dir": "runs/s1181_mlvu_253",
+ "budgets": [
+  4,
+  8,
+  16,
+  32
+ ],
+ "policies": [
+  "learned_curator"
+ ],
+ "action_policy": {
+  "model_path": "models/qwen2_5_vl_7b",
+  "adapter_path": "runs/grpo/qwen2_5_vl_7b_grpo_lora_final/lora_adapter",
+  "max_new_tokens": 384
+ },
+ "answerer": {
+  "kind": "openai_compat",
+  "endpoint": "http://localhost:8000",
+  "model": "models/qwen2_5_vl_7b",
+  "send_images": true,
+  "max_images": 16,
+  "timeout_seconds": 600
+ },
+ "policy": {
+  "max_hops": 4,
+  "retrieve_per_hop": 6,
+  "seed_uniform": 2,
+  "sufficiency_threshold": 0.72
+ },
+ "retrieval_recall_at_k": [
+  4,
+  8,
+  16,
+  32
+ ]
+}

@@ -1,0 +1,52 @@
+{
+  "stage": "eval_sweep",
+  "datasets": [
+    "longvideobench",
+    "video_mme_long",
+    "mlvu",
+    "nextqa_temporal",
+    "nextgqa",
+    "egoschema"
+  ],
+  "budgets": [4, 8, 16, 32],
+  "backbones": [
+    {
+      "name": "qwen2_5_vl_7b",
+      "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "server": "vllm"
+    },
+    {
+      "name": "qwen3_vl_8b_instruct",
+      "model": "Qwen/Qwen3-VL-8B-Instruct",
+      "server": "vllm"
+    },
+    {
+      "name": "qwen3_vl_8b_thinking",
+      "model": "Qwen/Qwen3-VL-8B-Thinking",
+      "server": "vllm",
+      "verify_availability_before_run": true
+    },
+    {
+      "name": "internvl3_5_8b",
+      "model": "OpenGVLab/InternVL3_5-8B",
+      "server": "transformers"
+    },
+    {
+      "name": "llava_video_7b",
+      "model": "lmms-lab/LLaVA-Video-7B-Qwen2",
+      "server": "transformers",
+      "verify_license_before_run": true
+    }
+  ],
+  "policies": [
+    "uniform",
+    "mmr_retrieve",
+    "scripted_curator",
+    "trained_curator_lora",
+    "aks_external",
+    "videotree_external",
+    "framethinker_external",
+    "videobrain_external",
+    "adaptive_greedy_external"
+  ]
+}

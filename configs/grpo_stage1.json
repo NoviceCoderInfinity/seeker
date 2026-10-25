@@ -1,0 +1,33 @@
+{
+  "stage": "lora_grpo",
+  "base_models": [
+    "models/qwen2_5_vl_7b",
+    "models/qwen3_vl_8b_instruct"
+  ],
+  "train_data": "data/rl/vidcurator_train_sft.jsonl",
+  "eval_data": "data/rl/vidcurator_val_sft.jsonl",
+  "output_root": "runs/grpo",
+  "verl": {
+    "repo": "${VERL_ROOT}",
+    "entrypoint": "examples/grpo_trainer/run_qwen2_5_vl_7b_fsdp.sh",
+    "trainer": "grpo",
+    "lora_rank": 32,
+    "global_batch_size": 64,
+    "rollout_n": 4,
+    "max_turns": 4
+  },
+  "reward_weights": {
+    "correct": 1.0,
+    "num_frames": 0.1,
+    "num_retrievals": 0.05,
+    "num_probes": 0.05,
+    "frame_evidence_precision": 0.3,
+    "calibrated_stop": 0.2,
+    "format_valid": 0.1
+  },
+  "budget_curriculum": [4, 8, 16],
+  "notes": [
+    "Use NExT-GQA examples for evidence reward; set frame_evidence_precision weight to 0 for datasets without temporal spans.",
+    "Keep VLM frozen except LoRA. The tool/action schema should be SFT-cold-started from scripted traces before GRPO."
+  ]
+}

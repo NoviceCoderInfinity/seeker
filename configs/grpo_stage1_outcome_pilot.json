@@ -1,0 +1,42 @@
+{
+  "stage": "lora_grpo_outcome_pilot",
+  "base_models": [
+    "models/qwen2_5_vl_7b",
+    "models/qwen3_vl_8b_instruct"
+  ],
+  "train_data": "data/rl/vidcurator_train_sft.jsonl",
+  "eval_data": "data/rl/vidcurator_val_sft.jsonl",
+  "output_root": "runs/grpo",
+  "verl": {
+    "repo": "${VERL_ROOT}",
+    "entrypoint": "examples/grpo_trainer/run_qwen2_5_vl_7b_fsdp.sh",
+    "trainer": "grpo",
+    "lora_rank": 32,
+    "lora_alpha": 32,
+    "global_batch_size": 8,
+    "rollout_n": 4,
+    "rollout_tp": 2,
+    "max_turns": 4,
+    "epochs": 1,
+    "train_max_samples": 256,
+    "val_max_samples": 128,
+    "save_freq": 16,
+    "test_freq": 16
+  },
+  "reward_weights": {
+    "correct": 1.0,
+    "num_frames": 0.1,
+    "num_retrievals": 0.05,
+    "num_probes": 0.05,
+    "frame_evidence_precision": 0.3,
+    "calibrated_stop": 0.2,
+    "format_valid": 0.1
+  },
+  "budget_curriculum": [4, 8, 16],
+  "notes": [
+    "PILOT for the outcome-aware reward (VIDCURATOR_REWARD_MODE=outcome). Validates gold-map load on",
+    "the compute node, rollout_n=4 memory headroom (n was forced to 1 by prior OOM fixes), and that",
+    "the reward actually MOVES (answer turns scored vs GOLD, not the teacher). Gate before full run.",
+    "Writes to GRPO_OUTPUT_DIR=runs/grpo/qwen2_5_vl_7b_outcome_pilot to protect the imitation baseline."
+  ]
+}

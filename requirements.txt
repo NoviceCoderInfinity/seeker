@@ -1,0 +1,19 @@
+# Minimal local smoke tests use only the Python standard library.
+#
+# Real experiment stack:
+decord>=0.6.0
+opencv-python>=4.10.0
+pillow>=10.0.0
+torch>=2.4.0
+transformers>=4.57.0
+accelerate>=1.0.0
+qwen-vl-utils>=0.0.8
+sentence-transformers>=3.0.0
+# SigLIP text tokenizer (question embedding for curator_siglip / T1.b FEP fix)
+sentencepiece>=0.2.0
+protobuf>=4.0.0
+peft>=0.13.0
+trl>=0.11.0
+vllm>=0.6.0
+pytest>=8.0.0
+ruff>=0.6.0

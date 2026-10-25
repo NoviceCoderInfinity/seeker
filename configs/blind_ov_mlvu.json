@@ -1,0 +1,32 @@
+{
+ "name": "blind_ov_mlvu",
+ "qa_path": "data/processed/heldout/mlvu_heldout.jsonl",
+ "frames_path": "data/indices/mlvu_siglip_frames.jsonl",
+ "output_dir": "runs/blind_ov_mlvu",
+ "budgets": [
+  0
+ ],
+ "policies": [
+  "uniform"
+ ],
+ "answerer": {
+  "kind": "openai_compat",
+  "endpoint": "http://127.0.0.1:8521",
+  "model": "models/llava_onevision_qwen2_7b_ov",
+  "send_images": true,
+  "max_images": 64,
+  "timeout_seconds": 900,
+  "prompt_style": "v3"
+ },
+ "policy": {
+  "max_hops": 4,
+  "retrieve_per_hop": 6,
+  "seed_uniform": 2,
+  "sufficiency_threshold": 0.72
+ },
+ "retrieval_recall_at_k": [
+  4,
+  8,
+  16
+ ]
+}

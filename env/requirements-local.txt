@@ -1,0 +1,2 @@
+# Local fixture runs use stdlib only, but editable install is useful if pip is available.
+-e .
